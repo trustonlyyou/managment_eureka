@@ -1,4 +1,4 @@
-package com.basketball.management.managment_eureka;
+package com.basketball.management;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
