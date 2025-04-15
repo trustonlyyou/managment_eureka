@@ -1,2 +1,2 @@
 # managment_eureka
-Basketball Managment Eureka Server
+Basketball Management Eureka Server
