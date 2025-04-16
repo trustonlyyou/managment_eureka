@@ -4,6 +4,10 @@ spring:
 server:
   port: 8761
 eureka:
+  server:
+    enable-self-preservation: true # 자기 보호 모드 활성화
+    eviction-interval-timer-in-ms: 30000 # 인스턴스 정리 주기 (기본 60초)
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    # Eureka Custer 구성시 true 로 변환
+    register-with-eureka: false # Eureka 클러스터 구성할 때 서로 서로 등록해야 할 경우 (서로 복제)
+    fetch-registry: false # Eureka 서버가 다른 Eureka 서버로부터 등록된 서비스 목록을 가져올 것인지
