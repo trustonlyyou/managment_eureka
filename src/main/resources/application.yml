@@ -1,6 +1,11 @@
 spring:
   application:
     name: management_eureka
+  security:
+    user:
+      name: admin
+      password: ENC(phkdMyW3l/Cv9QPlsVormzcFP45CnW9jPE+40iXApfVeOLDVYUjYaqw9YIEogDYkunMuFycrAr3pKYwFqogacsYWXHa+NBEp) # ENC(...) 형태로 암호화된 비밀번호를 사용합니다.
+
 server:
   port: 8761
 eureka:
@@ -11,3 +16,9 @@ eureka:
     # Eureka Custer 구성시 true 로 변환
     register-with-eureka: false # Eureka 클러스터 구성할 때 서로 서로 등록해야 할 경우 (서로 복제)
     fetch-registry: false # Eureka 서버가 다른 Eureka 서버로부터 등록된 서비스 목록을 가져올 것인지
+
+jasypt:
+  encryptor:
+#    password: {환경변수로 대체}
+    algorithm: PBEWithMD5AndDES
+    key-obtention-iterations: 1000

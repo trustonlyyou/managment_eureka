@@ -1,5 +1,7 @@
 package com.basketball.management.security;
 
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +18,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableEurekaServer
 public class SecurityConfig {
+
+    @Value("${spring.security.user.name}")
+    private String username;
+
+    @Value("${spring.security.user.password}")
+    private String password; // Jasypt가 자동으로 복호화된 값을 주입해줍니다.
 
     /**
      * BCrypt 알고리즘으로 패스워드 암호화
@@ -45,9 +53,8 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.builder()
-                .username("admin")
-//                .password(bCryptPasswordEncoder().encode("$2a$10$rdC5GpDN5AXJSFS3HpeRwO1HDn5xyM9OLUkuf/t3cwSoC6kW1M5qK"))
-                .password("$2a$10$rdC5GpDN5AXJSFS3HpeRwO1HDn5xyM9OLUkuf/t3cwSoC6kW1M5qK")
+                .username(username)
+                .password(password)
                 .roles("ADMIN")
                 .build();
 
